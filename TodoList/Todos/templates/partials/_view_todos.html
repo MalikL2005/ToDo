@@ -1,0 +1,20 @@
+<html>
+<body>
+<div id="todos">
+    <h2>View your Todo-items</h2>
+    {% for item in todo_list %}
+        <li>Title: {{ item.title }}; Description: {{item.description}};
+        {% if item.address %}
+            Address: {{item.address}};
+        {% endif %}
+        {% if not item.checked %}
+            <form action ="delete_item/" method="POST">
+                {% csrf_token %}
+                <button id="delete_item" name="delete_item" value={{item.id}}>Completed</button>
+            </form>
+        {% endif %}
+        </li>
+    {% endfor %}
+</div>
+</body>
+</html>

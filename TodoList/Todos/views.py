@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from .models import ToDoItem
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponsePermanentRedirect
 
 # Create your views here.
-@csrf_exempt
 def display_todos(req):
     todo_list = list(ToDoItem.objects.all().values())
-    return render(req, 'todos.html', {'todo_list': todo_list})
+    return render(req, 'base.html', {'todo_list': todo_list})
 
 def add_new_todo(req):
     if req.method == 'POST': 
@@ -20,3 +18,4 @@ def delete_item(req):
         id = req.POST['delete_item']
         item = ToDoItem.objects.filter(id=id).delete()
     return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
+

@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <div id="new_items">
+            <h2>Add new items</h2>
+            <form method="POST" action="add-new-todo/">
+                {% csrf_token %}
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title" required>
+                <label for="description">Description: </label>
+                <input type="text" id="description" name="description" required>
+                <label for="address">Address: </label>
+                <input type="text" id="address" name="address">
+                <input type="submit" value="Create new Todo-item">
+            </form>
+        </div>
+    </body>
+</html>
