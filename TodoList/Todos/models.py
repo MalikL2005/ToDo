@@ -6,3 +6,4 @@ class ToDoItem(models.Model):
     description = models.CharField(max_length=500)
     address = models.CharField(max_length=500, null=True)
     checked = models.BooleanField(default=False)
+    id = models.AutoField(primary_key=True)

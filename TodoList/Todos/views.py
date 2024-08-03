@@ -15,3 +15,8 @@ def add_new_todo(req):
         except: print("Could not add item to db")
     return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
 
+def delete_item(req):
+    if req.method == 'POST':
+        id = req.POST['delete_item']
+        item = ToDoItem.objects.filter(id=id).delete()
+    return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
