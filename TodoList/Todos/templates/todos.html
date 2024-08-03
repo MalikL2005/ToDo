@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Todo List</h1>
+        <div id="todos">
+            <h2>View your Todo-items</h2>
+            {% for item in todo_list %}
+                <li>Title: {{ item.title }}; Description: {{item.description}}; </li>
+                {% if item.checked %}
+                    Completed
+                {% else %}
+                    Not Completed
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="new_items">
+            <h2>Add new items</h2>
+        </div>
+    </body>
+</html>

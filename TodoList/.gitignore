@@ -2,3 +2,7 @@ manage.py
 Pipfile 
 Pipfile.lock
 .env
+migrations
+__pycache__
+db.sqlite3
+.pyc
