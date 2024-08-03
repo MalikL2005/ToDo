@@ -9,6 +9,9 @@
             <h2>View your Todo-items</h2>
             {% for item in todo_list %}
                 <li>Title: {{ item.title }}; Description: {{item.description}}; </li>
+                {% if item.address %}
+                    Address: {{item.address}}
+                {% endif %}
                 {% if item.checked %}
                     Completed
                 {% else %}
