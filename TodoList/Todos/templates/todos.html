@@ -8,10 +8,11 @@
         <div id="todos">
             <h2>View your Todo-items</h2>
             {% for item in todo_list %}
-                <li>Title: {{ item.title }}; Description: {{item.description}}; </li>
+                <li>Title: {{ item.title }}; Description: {{item.description}};
                 {% if item.address %}
                     Address: {{item.address}}
                 {% endif %}
+                </li>
                 {% if item.checked %}
                     Completed
                 {% else %}
@@ -22,7 +23,7 @@
 
         <div id="new_items">
             <h2>Add new items</h2>
-            <form method="POST">
+            <form method="POST" action="add-new-todo/">
                 {% csrf_token %}
                 <label for="title">Title: </label>
                 <input type="text" id="title" name="title" required>
