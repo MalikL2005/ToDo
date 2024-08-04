@@ -6,6 +6,10 @@
         <li>Title: {{ item.title }}; Description: {{item.description}};
         {% if item.address %}
             Address: {{item.address}};
+            <form action="maps/" method="POST">
+                {% csrf_token %}
+                <button id="show_map" name="show_map" value="{{item.address}}">Show Map</button>
+            </form>
         {% endif %}
         {% if not item.checked %}
             <form action ="delete_item/" method="POST">

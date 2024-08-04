@@ -19,3 +19,8 @@ def delete_item(req):
         item = ToDoItem.objects.filter(id=id).delete()
     return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
 
+def maps(req):
+    if req.method == 'POST':
+        print(req.POST['show_map'])
+    return HttpResponsePermanentRedirect('http://localhost:8000/todos/') #needs to be changed to /maps path
+
