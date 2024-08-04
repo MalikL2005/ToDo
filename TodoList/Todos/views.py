@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import ToDoItem
 from django.http import HttpResponsePermanentRedirect
+from django.http import HttpResponse
 
 # Create your views here.
 def display_todos(req):
@@ -20,7 +21,6 @@ def delete_item(req):
     return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
 
 def maps(req):
-    if req.method == 'POST':
-        print(req.POST['show_map'])
-    return HttpResponsePermanentRedirect('http://localhost:8000/todos/') #needs to be changed to /maps path
-
+    address = req.GET['show_map']
+    print(address)
+    return HttpResponsePermanentRedirect(f'https://www.google.com/maps/place/{address}/')
