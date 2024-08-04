@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import ToDoItem
 from django.http import HttpResponsePermanentRedirect
 from django.http import HttpResponse
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Create your views here.
 def display_todos(req):
@@ -12,13 +15,14 @@ def add_new_todo(req):
     if req.method == 'POST': 
         try: new_item = ToDoItem.objects.create(title=req.POST['title'], description=req.POST['description'], address=req.POST['address'])
         except: print("Could not add item to db")
-    return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
+    print(os.environ.get('URL'))
+    return HttpResponsePermanentRedirect(os.environ['URL'])
 
 def delete_item(req):
     if req.method == 'POST':
         id = req.POST['delete_item']
         item = ToDoItem.objects.filter(id=id).delete()
-    return HttpResponsePermanentRedirect('http://localhost:8000/todos/')
+    return HttpResponsePermanentRedirect(os.environ['URL'])
 
 def maps(req):
     address = req.GET['show_map']
