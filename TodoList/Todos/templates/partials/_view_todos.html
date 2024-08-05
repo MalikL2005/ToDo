@@ -2,22 +2,26 @@
 <body>
 <div id="todos">
     <h2>View your Todo-items</h2>
-    {% for item in todo_list %}
-        <li>Title: {{ item.title }}; Description: {{item.description}};
-        {% if item.address %}
-            Address: {{item.address}};
-            <form action="maps-show/" method="GET">
-                <button id="show_map" name="show_map" value="{{item.address}}">Show Map</button>
-            </form>
-        {% endif %}
-        {% if not item.checked %}
-            <form action ="delete-item/" method="POST">
-                {% csrf_token %}
-                <button id="delete_item" name="delete_item" value={{item.id}}>Completed</button>
-            </form>
-        {% endif %}
-        </li>
-    {% endfor %}
+    {% if todo_list %}
+        {% for item in todo_list %}
+            <li>Title: {{ item.title }}; Description: {{item.description}};
+            {% if item.address %}
+                Address: {{item.address}};
+                <form action="maps-show/" method="GET">
+                    <button id="show_map" name="show_map" value="{{item.address}}">Show Map</button>
+                </form>
+            {% endif %}
+            {% if not item.checked %}
+                <form action ="delete-item/" method="POST">
+                    {% csrf_token %}
+                    <button id="delete_item" name="delete_item" value={{item.id}}>Completed</button>
+                </form>
+            {% endif %}
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>All your ToDos are completed!</p>
+    {% endif %}
 </div>
 </body>
 </html>
