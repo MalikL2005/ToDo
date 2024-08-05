@@ -10,9 +10,9 @@ def start_nav(req):
     print("Starting")
     try: 
         items = ToDoItem.objects.all().values_list()
+        item=items[0]
     except:
         return HttpResponsePermanentRedirect(os.environ['URL'])
-    item=items[0]
     print(item)
     return HttpResponseRedirect(f'items/{item[4]}')
 
