@@ -3,8 +3,8 @@ Pipfile
 Pipfile.lock
 .env
 migrations
-__pycache__
 db.sqlite3
-.pyc
+__pycache__/
+*.py[cod]
 settings.py
 Todos/__pycache__/
