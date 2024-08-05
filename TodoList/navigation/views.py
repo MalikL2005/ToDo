@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.http import HttpResponsePermanentRedirect
 from Todos.models import ToDoItem
 import os
 # Create your views here.
 
 def start_nav(req): 
-    try:
+    print("Starting")
+    try: 
         items = ToDoItem.objects.all().values_list()
-        item=items[0]
-    except: 
-        return HttpResponsePermanentRedirect(os.environ['URL']) 
+    except:
+        return HttpResponsePermanentRedirect(os.environ['URL'])
+    item=items[0]
+    print(item)
     return HttpResponseRedirect(f'items/{item[4]}')
 
 def navigate(req, pk):
@@ -25,5 +28,5 @@ def navigate(req, pk):
 def remove_todo_item(req, pk):
     item_to_delete = ToDoItem.objects.filter(id=pk).delete()
     print(item_to_delete)
-    return HttpResponsePermanentRedirect(os.environ['URL']+'/nav')
+    return HttpResponsePermanentRedirect(os.environ['URL'])
 
