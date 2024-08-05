@@ -8,15 +8,14 @@
             {% if item.address %}
                 Address: {{item.address}};
                 <form action="maps-show/" method="GET">
+                    {% csrf_token %}
                     <button id="show_map" name="show_map" value="{{item.address}}">Show Map</button>
                 </form>
             {% endif %}
-            {% if not item.checked %}
-                <form action ="delete-item/" method="POST">
-                    {% csrf_token %}
-                    <button id="delete_item" name="delete_item" value={{item.id}}>Completed</button>
-                </form>
-            {% endif %}
+            <form action ="delete-item/" method="POST">
+                {% csrf_token %}
+                <button id="delete_item" name="delete_item" value={{item.id}}>Completed</button>
+            </form>
             </li>
         {% endfor %}
     {% else %}

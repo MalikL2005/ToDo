@@ -9,7 +9,8 @@
         <iframe src = "{{maps_url}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <!-- <iframe src = "" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         <form action="{{item.id}}/delete" method="GET">
-            <button>Go back to tasks aka. completed</button>
+            {% csrf_token %}
+            <button>Completed</button>
         </form>  
     </body>
 </html>
