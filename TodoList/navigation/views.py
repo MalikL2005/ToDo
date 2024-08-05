@@ -28,5 +28,5 @@ def navigate(req, pk):
 def remove_todo_item(req, pk):
     item_to_delete = ToDoItem.objects.filter(id=pk).delete()
     print(item_to_delete)
-    return HttpResponsePermanentRedirect(os.environ['URL'])
+    return HttpResponsePermanentRedirect(os.environ['URL']+'/nav')
 
