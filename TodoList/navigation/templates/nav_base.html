@@ -6,9 +6,10 @@
     <body>
         <h1>Navigation</h1>
         {{item.title}}
+        {{item.id}}
         <iframe src = "{{maps_url}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <!-- <iframe src = "" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-        <form action="{{item.id}}/delete" method="GET">
+        <form action="{{item.id}}/delete" method="POST">
             {% csrf_token %}
             <button>Completed</button>
         </form>  
