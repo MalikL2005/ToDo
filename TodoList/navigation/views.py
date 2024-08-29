@@ -14,7 +14,7 @@ def start_nav(req):
         print(item)
     except: 
         #pop up alert (No todos)
-        print("No Todos Here")
+        messages.info(req, "Add new ToDos")
         return HttpResponsePermanentRedirect(os.environ['URL'])
     return HttpResponsePermanentRedirect(f'items/{item[4]}')
 
